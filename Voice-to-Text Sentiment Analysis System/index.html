@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>VoiceSense | Voice-to-Text Sentiment Analysis</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+    <!-- Background -->
+    <div class="background-glow glow-one"></div>
+    <div class="background-glow glow-two"></div>
+
+    <!-- Navigation -->
+    <header class="navbar">
+
+        <div class="logo">
+            <div class="logo-icon">VS</div>
+
+            <div>
+                <h2>VoiceSense</h2>
+                <span>AI Sentiment Analyzer</span>
+            </div>
+        </div>
+
+        <nav>
+            <a href="#home">Home</a>
+            <a href="#analyzer">Analyzer</a>
+            <a href="#features">Features</a>
+        </nav>
+
+        <button class="nav-button" onclick="scrollToAnalyzer()">
+            Try Analyzer
+        </button>
+
+    </header>
+
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+
+        <div class="hero-content">
+
+            <div class="badge">
+                <span class="status-dot"></span>
+                AI-Powered Voice Analysis
+            </div>
+
+            <h1>
+                Turn Your
+                <span>Voice Into Insights</span>
+            </h1>
+
+            <p>
+                Record your voice, convert speech into text, and instantly
+                understand the emotional sentiment behind your words.
+            </p>
+
+            <div class="hero-buttons">
+
+                <button class="primary-button" onclick="scrollToAnalyzer()">
+                    🎙 Start Analyzing
+                </button>
+
+                <button class="secondary-button" onclick="showFeatures()">
+                    Explore Features →
+                </button>
+
+            </div>
+
+            <div class="hero-stats">
+
+                <div>
+                    <strong>3</strong>
+                    <span>Sentiments</span>
+                </div>
+
+                <div>
+                    <strong>Real-Time</strong>
+                    <span>Analysis</span>
+                </div>
+
+                <div>
+                    <strong>Voice</strong>
+                    <span>Recognition</span>
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="hero-visual">
+
+            <div class="voice-card">
+
+                <div class="card-top">
+
+                    <div>
+                        <span class="small-label">VOICE ANALYSIS</span>
+                        <h3>Live Recording</h3>
+                    </div>
+
+                    <div class="live-indicator">
+                        <span></span> LIVE
+                    </div>
+
+                </div>
+
+                <div class="wave-container">
+
+                    <div class="wave wave1"></div>
+                    <div class="wave wave2"></div>
+                    <div class="wave wave3"></div>
+                    <div class="wave wave4"></div>
+                    <div class="wave wave5"></div>
+                    <div class="wave wave6"></div>
+                    <div class="wave wave7"></div>
+                    <div class="wave wave8"></div>
+                    <div class="wave wave9"></div>
+                    <div class="wave wave10"></div>
+
+                </div>
+
+                <div class="sample-text">
+                    "I really enjoyed this experience!"
+                </div>
+
+                <div class="sample-result">
+
+                    <div class="sentiment-icon">😊</div>
+
+                    <div>
+                        <span>Detected Sentiment</span>
+                        <strong>Positive</strong>
+                    </div>
+
+                    <div class="confidence">
+                        94%
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- Analyzer Section -->
+    <section class="analyzer-section" id="analyzer">
+
+        <div class="section-heading">
+
+            <span class="section-label">VOICE ANALYZER</span>
+
+            <h2>
+                Analyze Your
+                <span>Voice</span>
+            </h2>
+
+            <p>
+                Speak naturally and let VoiceSense convert your speech into
+                meaningful sentiment insights.
+            </p>
+
+        </div>
+
+
+        <div class="analyzer-container">
+
+            <!-- Recording Panel -->
+            <div class="recording-panel">
+
+                <div class="panel-header">
+
+                    <div>
+                        <span class="panel-label">STEP 01</span>
+                        <h3>Record Your Voice</h3>
+                    </div>
+
+                    <div class="microphone-status" id="micStatus">
+                        Ready
+                    </div>
+
+                </div>
+
+
+                <div class="microphone-area">
+
+                    <div class="pulse-ring ring-one"></div>
+                    <div class="pulse-ring ring-two"></div>
+
+                    <button
+                        class="microphone-button"
+                        id="recordButton"
+                        onclick="toggleRecording()">
+
+                        🎙
+
+                    </button>
+
+                </div>
+
+                <div class="recording-status" id="recordingStatus">
+                    Click the microphone to start recording
+                </div>
+
+                <div class="timer" id="timer">
+                    00:00
+                </div>
+
+                <div class="waveform" id="waveform">
+
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+
+                </div>
+
+                <p class="browser-note">
+                    🎤 Allow microphone access when your browser asks for permission.
+                </p>
+
+            </div>
+
+
+            <!-- Text Panel -->
+            <div class="text-panel">
+
+                <div class="panel-header">
+
+                    <div>
+                        <span class="panel-label">STEP 02</span>
+                        <h3>Recognized Speech</h3>
+                    </div>
+
+                    <button class="clear-button" onclick="clearText()">
+                        Clear
+                    </button>
+
+                </div>
+
+
+                <textarea
+                    id="speechText"
+                    placeholder="Your spoken words will appear here..."
+                ></textarea>
+
+
+                <div class="text-footer">
+
+                    <span id="wordCount">
+                        0 words
+                    </span>
+
+                    <button
+                        class="analyze-button"
+                        onclick="analyzeSentiment()">
+
+                        Analyze Sentiment
+
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- Result -->
+        <div class="result-section" id="resultSection">
+
+            <div class="result-header">
+
+                <div>
+                    <span class="section-label">STEP 03</span>
+                    <h2>Sentiment Result</h2>
+                </div>
+
+                <div class="analysis-status">
+                    Analysis Complete
+                </div>
+
+            </div>
+
+
+            <div class="result-content">
+
+                <div class="sentiment-main">
+
+                    <div class="big-sentiment-icon" id="sentimentIcon">
+                        😊
+                    </div>
+
+                    <div>
+                        <span class="result-label">
+                            DETECTED SENTIMENT
+                        </span>
+
+                        <h2 id="sentimentText">
+                            Positive
+                        </h2>
+
+                        <p id="sentimentDescription">
+                            Your speech expresses a positive emotion.
+                        </p>
+                    </div>
+
+                </div>
+
+
+                <div class="confidence-box">
+
+                    <div class="confidence-top">
+
+                        <span>Confidence Score</span>
+
+                        <strong id="confidenceValue">
+                            94%
+                        </strong>
+
+                    </div>
+
+                    <div class="progress-bar">
+                        <div
+                            class="progress-fill"
+                            id="progressFill">
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- Features -->
+    <section class="features-section" id="features">
+
+        <div class="section-heading">
+
+            <span class="section-label">FEATURES</span>
+
+            <h2>
+                Powerful
+                <span>Voice Intelligence</span>
+            </h2>
+
+            <p>
+                Everything you need to transform spoken words into useful
+                sentiment insights.
+            </p>
+
+        </div>
+
+
+        <div class="features-grid">
+
+            <div class="feature-card">
+
+                <div class="feature-icon">🎤</div>
+
+                <h3>Voice Recognition</h3>
+
+                <p>
+                    Convert your spoken words into text using browser-based
+                    speech recognition.
+                </p>
+
+            </div>
+
+
+            <div class="feature-card">
+
+                <div class="feature-icon">🧠</div>
+
+                <h3>Sentiment Detection</h3>
+
+                <p>
+                    Identify whether the text expresses positive, negative,
+                    or neutral sentiment.
+                </p>
+
+            </div>
+
+
+            <div class="feature-card">
+
+                <div class="feature-icon">⚡</div>
+
+                <h3>Real-Time Results</h3>
+
+                <p>
+                    Receive instant feedback while analyzing your voice and
+                    recognized speech.
+                </p>
+
+            </div>
+
+
+            <div class="feature-card">
+
+                <div class="feature-icon">📊</div>
+
+                <h3>Confidence Score</h3>
+
+                <p>
+                    View an estimated confidence score for the detected
+                    sentiment.
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- Footer -->
+    <footer>
+
+        <div class="footer-content">
+
+            <div class="footer-logo">
+                <div class="logo-icon">VS</div>
+
+                <div>
+                    <h3>VoiceSense</h3>
+                    <p>Voice-to-Text Sentiment Analysis</p>
+                </div>
+            </div>
+
+            <p>
+                © 2026 VoiceSense. Built for intelligent voice analysis.
+            </p>
+
+        </div>
+
+    </footer>
+
+
+    <script src="script.js"></script>
+
+</body>
+</html>
